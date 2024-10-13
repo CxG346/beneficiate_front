@@ -1,0 +1,13 @@
+.generalTextArea{
+    width: 85%;
+    height: 20%;
+    background-color: white;
+    border-radius: 11px;
+    border: none;
+    color: #2E3192;
+    font-size: 16px;
+    padding: 0 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .4);
+    resize: none;
+    padding: .75rem 10px;
+}

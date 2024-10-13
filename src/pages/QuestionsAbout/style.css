@@ -1,0 +1,30 @@
+.main-container-support {
+    position: inherit;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, .5);
+}
+
+.main-container-support img {
+    width: 45%;
+    margin: 2.5rem 0 1.5rem 0;
+}
+
+.main-container-support p {
+    font-size: 1rem;
+    padding: .5rem;
+}
+
+.create-button {
+    position: relative;
+    width: 85%;
+    height: 3rem;
+    background-color: #2E3192;
+    margin: 13px 0;
+}

@@ -1,0 +1,16 @@
+.title-faq {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: .5rem;
+}
+
+.title-faq img {
+    width: 8%;
+}
+
+.title-faq h5 {
+    padding: 0;
+    margin: 0;
+}

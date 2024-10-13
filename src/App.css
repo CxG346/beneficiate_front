@@ -1,0 +1,33 @@
+.position-button-plugin{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.button-notification{
+  display: grid;
+  grid-auto-flow: column;
+  align-items:end;
+  column-gap: 5px;
+}
+
+.options-swipe{
+  display: flex;
+  justify-content: center;
+}
+
+.options-swipe .option{
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #6E4EFF;
+  margin: 0 3px;
+}
+
+.options-swipe .option.active{
+  width: 29px;
+  border-radius: 3.5px;
+  background-color: #2E3192;
+  margin: 0 3px;
+}
+

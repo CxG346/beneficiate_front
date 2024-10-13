@@ -1,0 +1,20 @@
+.main-faq-container{
+    position: inherit;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    color: black;
+    padding: 3rem 1rem;
+    overflow: scroll;
+}
+
+.footer-faq{
+    text-align: center;
+}
+
+.footer-faq a{
+    color: #3369FF;
+    font-weight: bold !important;
+}

@@ -1,0 +1,53 @@
+.background-color-container {
+    position: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.image-container-header {
+    height: max-content;
+    position: relative;
+}
+
+.info-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.5rem;
+    width: 80%;
+    margin: 1.5rem 0;
+}
+
+.info-header p {
+    color: white;
+    margin: 0;
+    text-align: left;
+}
+
+.content-home {
+    position: absolute;
+    left: 50%;
+    top: 2.5rem;
+    transform: translate(-50%, 0);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.points-container {
+    height: 81px;
+    width: 80%;
+    background-color: rgb(110, 78, 255, .85);
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 0 .5rem;
+}
+
