@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import { PATH } from "./paths";
 import Login from "../pages/Login";
 import Start from "../pages/Start";
 import FormLogin from "../pages/FormLogin";
@@ -9,6 +8,11 @@ import Faqs from "../pages/Faqs";
 import Support from "../pages/Support";
 import QuestionsAbout from "../pages/QuestionsAbout";
 import Home from "../pages/Home";
+import EarnPoints from "../pages/EarnPoints";
+import RedeemCoupon from "../pages/RedeemCoupon";
+import { PATH } from "./paths";
+import SuccessRedeem from "../pages/SuccessRedeem";
+import CodeValidation from "../pages/CodeValidation";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +51,22 @@ const router = createBrowserRouter([
     path: PATH.HOME,
     element: <Home />,
   },
+  {
+    path: PATH.EARN_POINTS,
+    element: <EarnPoints />,
+  },
+  {
+    path: PATH.REDEEM_COUPON,
+    element: <RedeemCoupon />,
+  },
+  {
+    path: PATH.SUCCESS_REDEEM,
+    element: <SuccessRedeem />,
+  },
+  {
+    path: PATH.CODE_VALIDATION,
+    element: <CodeValidation />
+  }
 ]);
 
 export default router;

@@ -1,0 +1,11 @@
+.input-number{
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    width: 100%;
+    font-size: 3rem;
+}
+
+.input-number:focus{
+    outline: none;
+}

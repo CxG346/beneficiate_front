@@ -8,4 +8,8 @@ export const PATH = {
     SUPPORT: '/support',
     QUESTIONS_ABOUT_MODAL: '/questions-about-modal',
     HOME: '/home',
+    EARN_POINTS: '/earn-points',
+    REDEEM_COUPON: '/redeem-coupon',
+    SUCCESS_REDEEM: '/success-redeem',
+    CODE_VALIDATION: '/code-validation',
 }

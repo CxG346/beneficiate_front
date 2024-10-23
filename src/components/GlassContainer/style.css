@@ -1,0 +1,17 @@
+.general-container-glass {
+    position: relative;
+    background-color: rgb(110, 78, 255, .85);
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 12px;
+}
+
+
+.glass-style {
+    width: 80%;
+    margin: .5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}

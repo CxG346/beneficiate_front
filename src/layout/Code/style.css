@@ -1,0 +1,29 @@
+.background-color-container {
+    position: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255);
+    overflow: scroll;
+}
+
+.wave-section {
+    position: relative;
+    width: 100%;
+    height: 45%;
+    overflow: hidden;
+    background-color: rgba(110, 78, 255, .7);
+    margin-bottom: 0;
+}
+
+.image-container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30%;
+}
+
+.image-container img {
+    width: 80%;
+}

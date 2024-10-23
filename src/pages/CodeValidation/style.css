@@ -1,0 +1,23 @@
+.input-code {
+    width: 25%;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.no-valid {
+    color: rgba(46, 49, 146, 1);
+    background: transparent;
+}
+
+.valid {
+    color: white;
+    background-color: rgba(58, 191, 56, 1);
+}
+
+.create-button {
+    position: relative;
+    width: 85%;
+    background-color: #2E3192;
+    margin: 13px 0;
+}

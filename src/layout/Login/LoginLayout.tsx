@@ -1,8 +1,8 @@
 import React from "react";
-import { loginLayoutProps } from "../../types/loginLayout";
+import { LoginLayoutProps } from "../../types/loginLayout";
 import "./style.css";
 
-const LoginLayout: React.FC<loginLayoutProps> = ({
+const LoginLayout: React.FC<LoginLayoutProps> = ({
   imgSrc,
   children,
   showFooter = false,
