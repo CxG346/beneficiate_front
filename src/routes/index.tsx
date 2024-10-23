@@ -13,6 +13,7 @@ import RedeemCoupon from "../pages/RedeemCoupon";
 import { PATH } from "./paths";
 import SuccessRedeem from "../pages/SuccessRedeem";
 import CodeValidation from "../pages/CodeValidation";
+import Level from "../pages/Levels";
 
 const router = createBrowserRouter([
   {
@@ -65,8 +66,12 @@ const router = createBrowserRouter([
   },
   {
     path: PATH.CODE_VALIDATION,
-    element: <CodeValidation />
-  }
+    element: <CodeValidation />,
+  },
+  {
+    path: PATH.LEVELS,
+    element: <Level />,
+  },
 ]);
 
 export default router;

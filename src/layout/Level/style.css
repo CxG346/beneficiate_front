@@ -1,0 +1,67 @@
+.background-color-container-level {
+    position: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: scroll;
+    background-color: transparent;
+}
+
+.wave-section-level {
+    position: relative;
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    background-color: rgba(110, 78, 255, .7);
+    margin-bottom: 0;
+}
+
+.linear-gradient-level-bronze {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, rgba(184, 111, 71, 0.79) 0%, rgba(184, 111, 71, 0) 100%);
+    height: 100%;
+    width: 100%;
+}
+
+.linear-gradient-level-silver {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(117, 117, 117, 0.79) 0%, rgba(117, 117, 117, 0) 100%);
+}
+
+.linear-gradient-level-gold {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(252, 208, 98, 0.79) 0%, rgba(252, 208, 98, 0) 100%);
+}
+
+.linear-gradient-level-diamond {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(225, 225, 225, 0.79) 0%, rgba(225, 225, 225, 0) 100%);
+}
+
+.level-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}

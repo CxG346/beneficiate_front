@@ -12,4 +12,5 @@ export const PATH = {
     REDEEM_COUPON: '/redeem-coupon',
     SUCCESS_REDEEM: '/success-redeem',
     CODE_VALIDATION: '/code-validation',
+    LEVELS: '/levels',
 }
