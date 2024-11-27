@@ -1,7 +1,13 @@
 import React from "react";
 import PiggyBank from "../../assets/piggy_bank.png";
+import { useSelector } from "react-redux";
+import { AppState } from "../../store/store";
 
 const SuccessRedeem: React.FC = () => {
+  const { primaryColor, secondaryColor } = useSelector(
+    (state: AppState) => state.generalConfig
+  );
+
   return (
     <div
       className="col"
@@ -24,25 +30,25 @@ const SuccessRedeem: React.FC = () => {
         <img src={PiggyBank} alt="" />
       </div>
       <div style={{ padding: "0 5rem" }}>
-        <p style={{ color: "rgba(110, 78, 255, 1)", fontSize: "18px" }}>
+        <p style={{ color: `${primaryColor}`, fontSize: "18px" }}>
           Acaba de Canjear 150 puntos por 150 pesos
         </p>
       </div>
       <div className="col" style={{ marginTop: "3rem" }}>
-        <p style={{ color: "rgba(110, 78, 255, 1)" }}>
+        <p style={{ color: `${primaryColor}` }}>
           ¡Las recompensas son ahora reales
         </p>
-        <p style={{ color: "rgba(110, 78, 255, 1)" }}>
+        <p style={{ color: "${" }}>
           Esto es sólo el comienzo.
         </p>
-        <p style={{ color: "rgba(110, 78, 255, 1)" }}>
+        <p style={{ color: "${" }}>
           Sigue coleccionando y cobrando
         </p>
       </div>
       <button
         style={{
           width: "80%",
-          background: "rgba(46, 49, 146, 1)",
+          background: `${secondaryColor}`,
           color: "white",
           padding: "1rem 0",
           margin: "1.5rem 0",

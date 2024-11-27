@@ -2,10 +2,16 @@ import React, { useEffect, useState } from "react";
 import HomeLayout from "../../layout/Home/HomeLayout";
 import GlassContainer from "../../components/GlassContainer";
 import "./style.css";
+import { useSelector } from "react-redux";
+import { AppState } from "../../store/store";
 
 const RedeemCoupon: React.FC = () => {
   const [valueInputNumber, setValueInputNumber] = useState<number>(0);
   const [points, setPoints] = useState<number>(150);
+
+  const { secondaryColor } = useSelector(
+    (state: AppState) => state.generalConfig
+  );
 
   const handleInputNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -27,7 +33,7 @@ const RedeemCoupon: React.FC = () => {
 
   useEffect(() => {
     setPoints(150);
-  }, [])
+  }, []);
 
   return (
     <HomeLayout>
@@ -55,7 +61,7 @@ const RedeemCoupon: React.FC = () => {
               width: "100%",
               background:
                 valueInputNumber > 0
-                  ? "rgba(46, 49, 146, 1)"
+                  ? `${secondaryColor}`
                   : "rgba(217, 217, 217, 0.7)",
               color: "white",
               padding: "1rem 0",
@@ -66,7 +72,7 @@ const RedeemCoupon: React.FC = () => {
           </button>
         </div>
       </GlassContainer>
-      <div style={{ display: "flex", width: "80%", gap: '.5rem' }}>
+      <div style={{ display: "flex", width: "80%", gap: ".5rem" }}>
         <div className="col-md-6" style={{ width: "100%" }}>
           <GlassContainer styles={{ width: "100%", padding: "0.5rem 0" }}>
             <p
@@ -75,8 +81,8 @@ const RedeemCoupon: React.FC = () => {
                 fontSize: "12px",
                 textAlign: "center",
                 width: "100%",
-                margin: '0',
-                padding: '.5rem 0'
+                margin: "0",
+                padding: ".5rem 0",
               }}
             >
               Como sumar puntos
@@ -91,8 +97,8 @@ const RedeemCoupon: React.FC = () => {
                 fontSize: "12px",
                 textAlign: "center",
                 width: "100%",
-                margin: '0',
-                padding: '.5rem 0'
+                margin: "0",
+                padding: ".5rem 0",
               }}
             >
               Como canjear puntos

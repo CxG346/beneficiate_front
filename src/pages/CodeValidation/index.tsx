@@ -1,8 +1,14 @@
 import React from "react";
 import "./style.css";
 import CodeLayout from "../../layout/Code/CodeLayout";
+import { useSelector } from "react-redux";
+import { AppState } from "../../store/store";
 
 const CodeValidation: React.FC = () => {
+  const { primaryColor, secondaryColor } = useSelector(
+    (state: AppState) => state.generalConfig
+  );
+
   return (
     <CodeLayout>
       <div
@@ -14,7 +20,7 @@ const CodeValidation: React.FC = () => {
       >
         <h1
           style={{
-            color: "rgba(46, 49, 146, 1)",
+            color: `${secondaryColor}`,
             fontWeight: "normal",
             fontSize: "2rem",
             textAlign: "center",
@@ -42,16 +48,50 @@ const CodeValidation: React.FC = () => {
             marginBottom: "2rem",
           }}
         >
-          <input className="input-code no-valid" type="text" />
-          <input className="input-code no-valid" type="text" />
-          <input className="input-code no-valid" type="text" />
-          <input className="input-code no-valid" type="text" />
+          <input
+            className="input-code"
+            style={{
+              color: `${secondaryColor}`,
+              background: "transparent",
+              border: `1px solid ${secondaryColor}`,
+            }}
+            type="text"
+          />
+          <input
+            className="input-code"
+            style={{
+              color: `${secondaryColor}`,
+              background: "transparent",
+              border: `1px solid ${secondaryColor}`,
+            }}
+            type="text"
+          />
+          <input
+            className="input-code"
+            style={{
+              color: `${secondaryColor}`,
+              background: "transparent",
+              border: `1px solid ${secondaryColor}`,
+            }}
+            type="text"
+          />
+          <input
+            className="input-code"
+            style={{
+              color: `${secondaryColor}`,
+              background: "transparent",
+              border: `1px solid ${secondaryColor}`,
+            }}
+            type="text"
+          />
         </div>
         <button className="create-button">Crear cuenta</button>
         <a href="" style={{ color: "#2E3192", marginTop: "0" }}>
           Reenviar código
         </a>
-        <p style={{ color: "rgba(110, 78, 255, 1)", padding: '1rem' }}>By Benefíciate</p>
+        <p style={{ color: `${primaryColor}`, padding: "1rem" }}>
+          By Benefíciate
+        </p>
       </div>
     </CodeLayout>
   );

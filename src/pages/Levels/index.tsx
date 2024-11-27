@@ -4,8 +4,14 @@ import DoubleGlass from "../../components/DoubleGlass";
 import GlassContainer from "../../components/GlassContainer";
 import CopyInput from "../../components/CopyInput";
 import NetworkList from "../../components/NetworksList";
+import { useSelector } from "react-redux";
+import { AppState } from "../../store/store";
 
 const Level: React.FC = () => {
+  const { primaryColor } = useSelector(
+    (state: AppState) => state.generalConfig
+  );
+
   return (
     <LevelLayout>
       <div
@@ -75,7 +81,7 @@ const Level: React.FC = () => {
             <NetworkList />
           </div>
         </GlassContainer>
-        <p style={{ color: "rgba(110, 78, 255, 1)", padding: "3rem 0 1rem 0" }}>
+        <p style={{ color: `${primaryColor}`, padding: "3rem 0 1rem 0" }}>
           By Benefíciate
         </p>
       </div>

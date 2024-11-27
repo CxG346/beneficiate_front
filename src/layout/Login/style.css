@@ -22,9 +22,8 @@
 .content-container {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 55%;
     background-color: white;
-    color: red;
     margin-top: -1px;
 }
 
@@ -81,8 +80,21 @@
     width: 100%;
     height: 50%;
     overflow: hidden;
-    background-color: rgba(110, 78, 255, .7);
     margin-bottom: 0;
+    background-image: url('../../assets/background.png');
+    background-size: cover;
+}
+
+.wave-section::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    background-color: rgba(110, 78, 255, .7);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
 .image-container img {
