@@ -46,3 +46,7 @@
     width: 22px;
     height: 22px;
 }
+
+.start-button{
+    background-color: var(--secondary-color);
+}

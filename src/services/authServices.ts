@@ -1,5 +1,4 @@
 import {
-  GlobalLoginTokenServiceRequest,
   UserLoginServiceRequest,
   UserLoginServiceResponse,
 } from "../types/api/auth";
@@ -13,15 +12,3 @@ export const UserLoginService = (data: UserLoginServiceRequest) => {
   });
 };
 
-export const GlobalLoginTokenService = (
-  data: GlobalLoginTokenServiceRequest
-) => {
-  return api<GlobalLoginTokenServiceRequest, any>({
-    method: "POST",
-    url: "connect/token",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    data,
-  });
-};

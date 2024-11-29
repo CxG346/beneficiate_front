@@ -8,6 +8,11 @@
   /* background-color: #242424; */
   background-color: #F5F5F5;
 
+  --primary-color: rgba(110, 78, 255, 1);
+  --primary-color-light: rgba(110, 78, 255, 0.7);
+  --secondary-color: rgba(46, 49, 146, 1);
+  --secondary-color-light: rgba(46, 49, 146, 0.7);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

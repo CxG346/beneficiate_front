@@ -1,3 +1,5 @@
+import { AxiosApiResponse } from "./api";
+
 export interface UserLoginServiceRequest {
   userName: string;
   password: string;
@@ -26,4 +28,12 @@ export interface GlobalLoginTokenServiceRequest {
   grant_type: string;
   username: string;
   password: string;
+}
+
+export interface GlobalLoginTokenServiceResponse {
+  access_token: string
+  expires_in: number
+  refresh_token: string
+  scope: string
+  token_type: string
 }

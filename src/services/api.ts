@@ -1,8 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { AxiosApiResponse } from "../types/api/api";
 
-axios.defaults.baseURL =
-  "https://beneficiate-dev-api.azurewebsites.net/";
+axios.defaults.baseURL = "https://beneficiate-dev-api.azurewebsites.net/";
 
 export default function api<RequestDataType, ResponseDataType>({
   method = "POST",
@@ -13,11 +12,11 @@ export default function api<RequestDataType, ResponseDataType>({
 }: AxiosRequestConfig<RequestDataType>): Promise<
   AxiosApiResponse<ResponseDataType>
 > {
-  const accessToken = localStorage.getItem("access_token");
+  const accessToken = localStorage.getItem("general_access_token");
 
-  if (accessToken)
-    axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
-  else delete axios.defaults.headers.common["Authorization"];
+  if (accessToken) {
+    headers["Authorization"] = `Bearer ${accessToken}`;
+  }
 
   let formattedData: RequestDataType | string | undefined = data;
   if (headers["Content-Type"] === "application/x-www-form-urlencoded") {
@@ -27,6 +26,13 @@ export default function api<RequestDataType, ResponseDataType>({
     });
     formattedData = urlSearchParams.toString();
   }
+
+  console.log("API Request", {
+    method,
+    data: formattedData,
+    url,
+    headers,
+  });
 
   return axios
     .request<AxiosApiResponse<ResponseDataType>>({
