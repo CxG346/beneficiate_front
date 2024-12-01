@@ -1,5 +1,3 @@
-import { AxiosApiResponse } from "./api";
-
 export interface UserLoginServiceRequest {
   userName: string;
   password: string;
@@ -12,7 +10,7 @@ interface UserDiscount {
   benefitType: number;
 }
 
-interface UserLoginResponse {
+export interface UserLoginResponse {
   token: string;
   level: string;
   userName: string;
@@ -36,4 +34,15 @@ export interface GlobalLoginTokenServiceResponse {
   refresh_token: string
   scope: string
   token_type: string
+}
+
+export interface UserRegister {
+  ci:             string;
+  phoneNumber:    string;
+  email:          string;
+  firstName:      string;
+  lastName:       string;
+  referCode:      string;
+  password:       string;
+  emailMarketing: boolean;
 }

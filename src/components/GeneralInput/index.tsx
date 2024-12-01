@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 
 interface GeneralInputProps {
+  name?: string;
   placeholder?: string;
   required?: boolean;
   style?: React.CSSProperties;
@@ -9,6 +10,7 @@ interface GeneralInputProps {
 }
 
 const GeneralInput: React.FC<GeneralInputProps> = ({
+  name,
   placeholder,
   required,
   style,
@@ -16,6 +18,7 @@ const GeneralInput: React.FC<GeneralInputProps> = ({
 }) => {
   return (
     <input
+      name={name}
       className="generalInput"
       type="text"
       placeholder={placeholder + (required ? "*" : "")}

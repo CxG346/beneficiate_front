@@ -6,28 +6,26 @@ import GeneralInput from "../../components/GeneralInput";
 import "./style.css";
 import { useSelector } from "react-redux";
 import { AppState } from "../../store/store";
-import { UserLoginServiceRequest } from "../../types/api/auth";
-import { UserLoginService } from "../../services/authServices";
+import { UserLoginResponse, UserLoginServiceRequest } from "../../types/api/auth";
+import { login } from "../../services/authServices";
+import { PATH } from "../../routes/paths";
+import { useNavigate } from "react-router-dom";
 
 const FormLogin: React.FC = () => {
-  const { secondaryColor } = useSelector(
-    (state: AppState) => state.generalConfig
-  );
+  const navigate = useNavigate();
+  const { secondaryColor } = useSelector((state: AppState) => state.generalConfig);
 
   const [user, setUser] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  function _handleChangeInput(
-    e: React.ChangeEvent<HTMLInputElement>,
-    target: React.Dispatch<React.SetStateAction<string>>
-  ) {
-    target(e.target.value);
-  }
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>, setter: React.Dispatch<React.SetStateAction<string>>) => {
+    setter(e.target.value);
+  };
 
-  async function _handleSubmit() {
+  const handleSubmit = async () => {
     setError("");
-    if (user === "" || password === "") {
+    if (!user || !password) {
       setError("Por favor, rellene todos los campos");
       return;
     }
@@ -35,40 +33,45 @@ const FormLogin: React.FC = () => {
     const body: UserLoginServiceRequest = {
       userName: user,
       password: password
-    }
+    };
 
-    const response = await UserLoginService(body)
-  }
+    try {
+      const resp: UserLoginResponse = await login(body);
+      localStorage.setItem("general_data_user", JSON.stringify(resp));
+      navigate(PATH.HOME);
+    } catch (error) {
+      setError("Error al iniciar sesión. Por favor, intente nuevamente.");
+      console.error("Error al iniciar sesión:", error);
+    }
+  };
 
   return (
     <LoginLayout imgSrc={LoginFormImg}>
-      <h2>Que bueno tenerte de nuevo!!!</h2>
+      <h2>¡Qué bueno tenerte de nuevo!</h2>
       <div className="form-container">
         <GeneralInput
           placeholder="CI/Email"
-          onChange={(value) => _handleChangeInput(value, setUser)}
+          onChange={(e) => handleChangeInput(e, setUser)}
         />
         <GeneralInput
           placeholder="Contraseña"
-          onChange={(value) => _handleChangeInput(value, setPassword)}
+          onChange={(e) => handleChangeInput(e, setPassword)}
         />
         <button
           className="actions-button"
-          style={{ background: `${secondaryColor}` }}
-          onClick={_handleSubmit}
+          style={{ background: secondaryColor }}
+          onClick={handleSubmit}
         >
-          <img className="avatar-img" src={avatarImg} alt="" />
+          <img className="avatar-img" src={avatarImg} alt="Avatar" />
           Iniciar sesión
         </button>
-        {error != "" && (
-          <span
-            style={{ color: "red", fontSize: ".75rem", marginTop: ".5rem" }}
-          >
+        {error && (
+          <span className="error-message">
             {error}
           </span>
         )}
         <a href="">
-          Olvide la contraseña <strong>Quiero recuperarla</strong>
+          Olvidé la contraseña <strong>Quiero recuperarla</strong>
         </a>
       </div>
       <p className="footer-copy">By Benefíciate</p>

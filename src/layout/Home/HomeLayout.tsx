@@ -4,8 +4,17 @@ import "./style.css";
 import avatarBronze from "../../assets/avatar_bronze.png";
 import bronzeMedal from "../../assets/bronze_medal.png";
 import { HomeLayoutProps } from "../../types/homeLayout";
+import { UserLoginResponse } from "../../types/api/auth";
 
 const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
+
+  const data = localStorage.getItem("general_data_user");
+  let dataUser: UserLoginResponse = {} as UserLoginResponse;
+
+  if (data && data !== "undefined") {
+    dataUser = JSON.parse(data);
+  }
+
   return (
     <>
       <div className="background-color-container">
@@ -18,7 +27,7 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
               </div>
               <div className="col-md-8">
                 <p style={{ color: "white", fontSize: "18px" }}>
-                  Hola, Sebastian
+                  Hola, {dataUser?.userName}
                 </p>
                 <p style={{ color: "white", fontSize: "10px" }}>
                   Bienvenido a Quiero+
@@ -40,7 +49,7 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
                     padding: "0",
                   }}
                 >
-                  150
+                  {dataUser?.amountOfPoints}
                 </p>
               </div>
               <div className="container-level">

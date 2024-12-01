@@ -104,7 +104,7 @@ const Home: React.FC = () => {
             }}
           >
             <i className="bi bi-whatsapp" style={{ fontSize: "x-large" }}></i>
-            <p style={{ color: "white" }}>whatsapp</p>
+            <p style={{ color: "white" }}>Whatsapp</p>
           </div>
           <div
             style={{

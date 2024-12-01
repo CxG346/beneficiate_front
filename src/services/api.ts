@@ -1,49 +1,46 @@
-import axios, { AxiosRequestConfig } from "axios";
-import { AxiosApiResponse } from "../types/api/api";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 axios.defaults.baseURL = "https://beneficiate-dev-api.azurewebsites.net/";
 
-export default function api<RequestDataType, ResponseDataType>({
+function getAccessToken(): string | null {
+  return localStorage.getItem("general_access_token");
+}
+
+function formatData<RequestDataType>(data: RequestDataType, headers: Record<string, string>): RequestDataType | string | undefined {
+  if (headers["Content-Type"] === "application/x-www-form-urlencoded") {
+    const urlSearchParams = new URLSearchParams();
+    Object.entries(data as Record<string, string | number | boolean>).forEach(([key, value]) => {
+      urlSearchParams.append(key, value as string);
+    });
+    return urlSearchParams.toString();
+  }
+  return data;
+}
+
+export default async function api<RequestDataType, ResponseDataType>({
   method = "POST",
   data,
   url = "",
   headers = {},
   params = {},
-}: AxiosRequestConfig<RequestDataType>): Promise<
-  AxiosApiResponse<ResponseDataType>
-> {
-  const accessToken = localStorage.getItem("general_access_token");
+}: AxiosRequestConfig<RequestDataType>): Promise<ResponseDataType> {
+  const accessToken = getAccessToken();
 
   if (accessToken) {
     headers["Authorization"] = `Bearer ${accessToken}`;
   }
 
-  let formattedData: RequestDataType | string | undefined = data;
-  if (headers["Content-Type"] === "application/x-www-form-urlencoded") {
-    const urlSearchParams = new URLSearchParams();
-    Object.entries(data as Record<string, any>).forEach(([key, value]) => {
-      urlSearchParams.append(key, value);
-    });
-    formattedData = urlSearchParams.toString();
-  }
+  const formattedData = formatData(data, headers as Record<string, string>);
 
-  console.log("API Request", {
+  const response: AxiosResponse<ResponseDataType> = await axios.request({
     method,
     data: formattedData,
     url,
-    headers,
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    },
+    params,
   });
-
-  return axios
-    .request<AxiosApiResponse<ResponseDataType>>({
-      method,
-      data: formattedData,
-      url,
-      headers: {
-        "content-type": "application/json",
-        ...headers,
-      },
-      params,
-    })
-    .then((response) => response.data);
+  return response.data;
 }

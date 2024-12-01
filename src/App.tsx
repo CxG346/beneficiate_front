@@ -14,7 +14,6 @@ function App() {
 
   const handleShowModal = () => {
     setShowModal(!showModal);
-    console.log("Hola");
   };
 
   const getTokenLogin = async () => {
