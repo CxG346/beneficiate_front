@@ -1,6 +1,14 @@
+import { UserLoginResponse } from "../types/api/auth";
 import { Question } from "../types/api/questionst";
 import { EmailCode, ReferCode, Request, ValidateCuponCode } from "../types/api/send";
 import api from "./api";
+
+const data = localStorage.getItem("general_data_user");
+let dataUser: UserLoginResponse = {} as UserLoginResponse;
+
+if (data && data !== "undefined") {
+    dataUser = JSON.parse(data);
+}
 
 export const sendRequest = (data: Request) => {
     return api<Request, boolean>({
@@ -11,9 +19,9 @@ export const sendRequest = (data: Request) => {
 };
 
 export const sendRequestRewardQuestions = (data: Question[]) => {
-    return api<Question[], Question[]>({
+    return api<Question[], boolean>({
         method: "POST",
-        url: "api/app/ecomerce-integration/send-reward-questions",
+        url: `api/app/ecomerce-integration/send-rewards-questions?token=${dataUser.token}`,
         data,
     });
 };

@@ -14,11 +14,11 @@ import { useAlert } from "../../components/Alert/useAlert";
 
 const FormLogin: React.FC = () => {
   const navigate = useNavigate();
+  const { showAlert } = useAlert();
   const { secondaryColor } = useSelector((state: AppState) => state.generalConfig);
 
   const [user, setUser] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const { showAlert } = useAlert();
   
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>, setter: React.Dispatch<React.SetStateAction<string>>) => {
     setter(e.target.value);
