@@ -73,3 +73,19 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* add style placeholder inputs */
+input::placeholder {
+  color: #6E4EFF;
+}
+
+.form-container{
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-flow: column !important;
+  /* flex-direction: column; */
+  padding: 10px 20px !important;
+  width: auto !important;
+  position: relative !important;
+}

@@ -5,11 +5,11 @@
     height: 160vw;
     width: 85vw;
     max-height: 700px;
-    max-width: 360px;
+    max-width: 370px;
     border-radius: 20px;
     margin-bottom: 8px;
     background-image: url('../../assets/background.png'); 
     background-size: cover;
     background-position: center;
-    overflow: scroll;
+    overflow: auto;
 }

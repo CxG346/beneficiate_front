@@ -18,14 +18,25 @@ const FormRegister: React.FC = () => {
     lastName: '',
     referCode: '',
     password: '',
-    emailMarketing: false
+    emailMarketing: true
   });
 
   const [isChecked, setIsChecked] = useState(false);
-  const [error, setError] = useState<string>('');
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const validate = (): boolean => {
-    return Object.keys(formData).length === 0;
+    const newErrors: { [key: string]: string } = {};
+
+    if (!formData.firstName) newErrors.firstName = 'Nombre es requerido';
+    if (!formData.lastName) newErrors.lastName = 'Apellido es requerido';
+    if (!formData.ci) newErrors.ci = 'CI es requerido';
+    if (!formData.phoneNumber) newErrors.phoneNumber = 'Teléfono es requerido';
+    if (!formData.email) newErrors.email = 'Email es requerido';
+    if (!formData.password) newErrors.password = 'Contraseña es requerida';
+    if (!isChecked) newErrors.terms = 'Debe aceptar los términos y condiciones';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +48,6 @@ const FormRegister: React.FC = () => {
   };
 
   const handleCreateAccount = async () => {
-    setError('');
     if (validate()) {
       try {
         await register(formData);
@@ -45,8 +55,6 @@ const FormRegister: React.FC = () => {
       } catch (error) {
         console.error('Error al crear la cuenta:', error);
       }
-    }else{
-      setError('Por favor, rellene todos los campos');
     }
   };
 
@@ -57,23 +65,23 @@ const FormRegister: React.FC = () => {
       </h2>
       <p>Desbloquea recompensas, !empieza a ganar ahora!</p>
       <div className="form-container">
-        <GeneralInput name="firstName" placeholder="Nombre" required onChange={handleChange} />
+      <GeneralInput name="firstName" placeholder="Nombre" required onChange={handleChange} />
         <GeneralInput name="lastName" placeholder="Apellido" required onChange={handleChange} />
         <GeneralInput name="ci" placeholder="CI" required onChange={handleChange} />
         <GeneralInput name="phoneNumber" placeholder="Teléfono" required onChange={handleChange} />
-        <GeneralInput name="email" placeholder="Email" required onChange={handleChange} />
-        <GeneralInput name="password" placeholder="Contraseña" required onChange={handleChange} />
+        <GeneralInput name="email" type={'email'} placeholder="Email" required onChange={handleChange} />
+        <GeneralInput name="password" type={'password'} placeholder="Contraseña"  required onChange={handleChange} />
         <GeneralInput name="referCode" placeholder="Código de referidos" required onChange={handleChange} />
         <CheckboxCustom
           label="Acepto los términos y condiciones"
           checked={isChecked}
           onChange={setIsChecked}
         />
-        {error && (
-          <span className="error-message">
-            {error}
+        { 
+          errors.terms && <span className="error-message">
+            {errors.terms}
           </span>
-        )}
+        }
         <button className="create-button" onClick={handleCreateAccount}>
           Crear cuenta
         </button>

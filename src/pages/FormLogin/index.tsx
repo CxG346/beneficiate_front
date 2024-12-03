@@ -10,6 +10,7 @@ import { UserLoginResponse, UserLoginServiceRequest } from "../../types/api/auth
 import { login } from "../../services/authServices";
 import { PATH } from "../../routes/paths";
 import { useNavigate } from "react-router-dom";
+import { useAlert } from "../../components/Alert/useAlert";
 
 const FormLogin: React.FC = () => {
   const navigate = useNavigate();
@@ -17,16 +18,15 @@ const FormLogin: React.FC = () => {
 
   const [user, setUser] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<string>("");
-
+  const { showAlert } = useAlert();
+  
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>, setter: React.Dispatch<React.SetStateAction<string>>) => {
     setter(e.target.value);
   };
 
   const handleSubmit = async () => {
-    setError("");
     if (!user || !password) {
-      setError("Por favor, rellene todos los campos");
+      showAlert("Por favor, rellene todos los campos", "error");
       return;
     }
 
@@ -37,10 +37,13 @@ const FormLogin: React.FC = () => {
 
     try {
       const resp: UserLoginResponse = await login(body);
+      showAlert("Los datos son correctos", "success");
       localStorage.setItem("general_data_user", JSON.stringify(resp));
-      navigate(PATH.HOME);
+      setTimeout(() => {
+        navigate(PATH.HOME);  
+      }, 1000);
     } catch (error) {
-      setError("Error al iniciar sesión. Por favor, intente nuevamente.");
+      showAlert("El CI/Email o la contraseña son incorrectos", "error");
       console.error("Error al iniciar sesión:", error);
     }
   };
@@ -65,11 +68,6 @@ const FormLogin: React.FC = () => {
           <img className="avatar-img" src={avatarImg} alt="Avatar" />
           Iniciar sesión
         </button>
-        {error && (
-          <span className="error-message">
-            {error}
-          </span>
-        )}
         <a href="">
           Olvidé la contraseña <strong>Quiero recuperarla</strong>
         </a>
