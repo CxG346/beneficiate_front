@@ -4,7 +4,8 @@
     left: 0;
     top: 0;
     bottom: 0;
-    overflow: scroll;
+    overflow: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,7 +26,7 @@
 .create-button {
     position: relative;
     width: 85%;
-    height: 3rem;
+    height: 54px;
     background-color: #2E3192;
     margin: 13px 0;
 }
