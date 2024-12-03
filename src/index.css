@@ -79,6 +79,10 @@ input::placeholder {
   color: #6E4EFF;
 }
 
+textarea::placeholder {
+  color: #6E4EFF;
+}
+
 .form-container{
   overflow: hidden !important;
   display: flex !important;

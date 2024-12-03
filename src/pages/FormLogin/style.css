@@ -1,38 +1,16 @@
-/* .form-container {
-    position: absolute;
-    height: 75%;
-    width: 100%;
-    overflow: scroll;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.actions-button {
-    width: 85%;
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 8px;
-    font-weight: 300;
-    font-size: 1.2rem;
-    margin-top: .5rem;
-}
-
-.start-button {
-    background-color: #2E3192;
-}
-
-
-.content-container {
-    background-color: rgba(255, 255, 255, 0.45);
-    }
-    */
-
 a {
     font-size: .85rem;
     font-weight: 300 !important;
     margin-top: .5rem;
     text-align: center;
 }
+
+.title-good {
+    color: #2E3192;
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+    font-size: 35px;
+    padding: 0 1rem;
+}
+

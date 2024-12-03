@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { PATH } from "../../routes/paths";
 import { UserRegister } from "../../types/api/auth";
 import { register } from "../../services/authServices";
+import { useAlert } from "../../components/Alert/useAlert";
 
 const FormRegister: React.FC = () => {
   const navigate = useNavigate();
-
+  const { showAlert } = useAlert();
   const [formData, setFormData] = useState<UserRegister>({
     ci: '',
     phoneNumber: '',
@@ -22,7 +23,6 @@ const FormRegister: React.FC = () => {
   });
 
   const [isChecked, setIsChecked] = useState(false);
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const validate = (): boolean => {
     const newErrors: { [key: string]: string } = {};
@@ -35,7 +35,6 @@ const FormRegister: React.FC = () => {
     if (!formData.password) newErrors.password = 'Contraseña es requerida';
     if (!isChecked) newErrors.terms = 'Debe aceptar los términos y condiciones';
 
-    setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
@@ -51,16 +50,27 @@ const FormRegister: React.FC = () => {
     if (validate()) {
       try {
         await register(formData);
-        navigate(PATH.LOGIN);
+        showAlert('Cuenta creada correctamente', 'success');
+        setTimeout(() => {
+          navigate(PATH.LOGIN);
+        }, 1000);
       } catch (error) {
-        console.error('Error al crear la cuenta:', error);
+        
+        if (error instanceof Error  && typeof error === 'object'  && error.message) {
+          const responseError = error as unknown as { response: { data: { error: { message: string } } } };
+          showAlert(responseError.response.data.error.message, 'error');
+        } else {
+          showAlert('Error desconocido', 'error');
+        }
       }
+    }else{
+      showAlert('Por favor, rellene todos los campos correctamente', 'error');
     }
   };
 
   return (
     <div className="general-container">
-      <h2>
+      <h2 className="title-join">
         Unite ahora a <strong>Quiero +</strong>
       </h2>
       <p>Desbloquea recompensas, !empieza a ganar ahora!</p>
@@ -77,11 +87,6 @@ const FormRegister: React.FC = () => {
           checked={isChecked}
           onChange={setIsChecked}
         />
-        { 
-          errors.terms && <span className="error-message">
-            {errors.terms}
-          </span>
-        }
         <button className="create-button" onClick={handleCreateAccount}>
           Crear cuenta
         </button>

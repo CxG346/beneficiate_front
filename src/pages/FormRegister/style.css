@@ -1,10 +1,8 @@
-h2 {
+.title-join {
     color: #2E3192;
     font-weight: 400;
     text-align: center;
-    margin: 0;
-    font-size: 35px;
-    padding: 0 1rem;
+    margin: 40px 0 0;
 }
 
 p {
