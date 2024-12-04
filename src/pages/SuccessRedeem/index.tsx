@@ -2,8 +2,14 @@ import React from "react";
 import PiggyBank from "../../assets/piggy_bank.png";
 import { useSelector } from "react-redux";
 import { AppState } from "../../store/store";
+import { useNavigate } from "react-router-dom";
 
 const SuccessRedeem: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleEarnPoints = () => {
+    navigate('/redeem-coupon');
+  };
   const { primaryColor, secondaryColor } = useSelector(
     (state: AppState) => state.generalConfig
   );
@@ -20,7 +26,6 @@ const SuccessRedeem: React.FC = () => {
       }}
     >
       <div
-        className=""
         style={{
           display: "flex",
           justifyContent: "center",
@@ -46,6 +51,7 @@ const SuccessRedeem: React.FC = () => {
         </p>
       </div>
       <button
+        onClick={handleEarnPoints}
         style={{
           width: "80%",
           background: `${secondaryColor}`,

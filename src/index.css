@@ -16,7 +16,7 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;  
 }
 
 a {
@@ -76,7 +76,7 @@ button:focus-visible {
 
 /* add style placeholder inputs */
 input::placeholder {
-  color: #6E4EFF;
+  color: #6E4EFF ;
 }
 
 textarea::placeholder {
@@ -92,4 +92,8 @@ textarea::placeholder {
   padding: 10px 20px !important;
   width: auto !important;
   position: relative !important;
+}
+
+.text-abel{
+  font-family: 'Abel', sans-serif;
 }

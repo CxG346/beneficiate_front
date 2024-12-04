@@ -18,10 +18,10 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
           <div className="content-home">
             <div className="info-header">
               <div className="col-md-4">
-                <img src={avatarBronze} alt="" />
+                <img src={avatarBronze} alt="" style={{ margin: '10px 0 0'}} />
               </div>
               <div className="col-md-8">
-                <p style={{ color: "white", fontSize: "18px" }}>
+                <p style={{ color: "white", fontSize: "21px" }}>
                   Hola, {dataUser?.userName}
                 </p>
                 <p style={{ color: "white", fontSize: "10px" }}>
@@ -30,22 +30,25 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
               </div>
             </div>
             <div className="points-container" style={{ cursor: "pointer", backdropFilter: 'blur(3px)' }}>
-              <img src={bronzeMedal} alt="" />
-              <div className="col col-points">
-                <p style={{ color: "white", fontSize: "10px", margin: "0" }}>
-                  Tus puntos
-                </p>
-                <p
-                  style={{
-                    color: "white",
-                    fontSize: "24px",
-                    fontWeight: "normal",
-                    margin: "0",
-                    padding: "0",
-                  }}
-                >
-                  {dataUser?.amountOfPoints}
-                </p>
+              <div style={{ display: 'flex', gap: '1rem'}}>
+                <img src={bronzeMedal} alt="" style={{margin: '9px 0 0 8px', width: '59px'}} />
+                <div className="col col-points">
+                  <p style={{ color: "white", fontSize: "12px", margin: "0" }}>
+                    Tus puntos
+                  </p>
+                  <p
+                    className="text-abel"
+                    style={{
+                      color: "white",
+                      fontSize: "40px",
+                      fontWeight: "normal",
+                      margin: "-5px",
+                      padding: "0",
+                    }}
+                  >
+                    {dataUser?.amountOfPoints}
+                  </p>
+                </div>
               </div>
               <div className="container-level">
                 <p style={{ color: "white", fontSize: "12px", margin: "0" }}>

@@ -50,7 +50,7 @@ const FormLogin: React.FC = () => {
 
   return (
     <LoginLayout imgSrc={LoginFormImg}>
-      <h2 className="title-good">¡Qué bueno tenerte de nuevo!</h2>
+      <h2 className="title-good text-abel">¡Qué bueno tenerte de nuevo!</h2>
       <div className="form-container">
         <GeneralInput
           placeholder="CI/Email"

@@ -25,7 +25,7 @@ const GeneralInput: React.FC<GeneralInputProps> = ({
       type={type}
       placeholder={placeholder + (required ? "*" : "")}
       onChange={onChange}
-      style={{ marginBottom: "13px", ...style }}
+      style={{ marginBottom: "15px", ...style }}
     />
   );
 };

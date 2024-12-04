@@ -22,11 +22,10 @@ export const register = (data: UserRegister) => {
   });
 }
 
-export const configModal = (data: { ci: string }) => {
-  return api<{ ci: string }, ConfigurationModal>({
-    method: "POST",
+export const configModal = () => {
+  return api<string, ConfigurationModal>({
+    method: "GET",
     url: "api/app/ecomerce-integration/configuration-modal",
-    data,
   });
 };
 

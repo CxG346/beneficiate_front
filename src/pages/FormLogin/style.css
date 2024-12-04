@@ -6,11 +6,12 @@ a {
 }
 
 .title-good {
-    color: #2E3192;
+    color: #6E4EFF;
     font-weight: 400;
     text-align: center;
     margin: 0;
     font-size: 35px;
-    padding: 0 1rem;
+    padding: 0 3rem;
+    line-height: 1;
 }
 

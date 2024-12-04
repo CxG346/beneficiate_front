@@ -1,13 +1,13 @@
 .general-container-glass {
     background-color: #6E4EFFB2;
     border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 5px rgb(0 0 0 / 17%);
     font-size: 12px;
 }
 
 
 .glass-style {
-    width: 80%;
+    width: 85%;
     margin: .5rem 0;
     display: flex;
     justify-content: space-between;

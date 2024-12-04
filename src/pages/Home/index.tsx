@@ -43,7 +43,7 @@ const Home: React.FC = () => {
       </div>
       <div
         className="general-container-glass"
-        style={{ width: "80%", margin: "1rem 0" }}
+        style={{ width: "90%", margin: "1rem 0" }}
       >
         <div
           className="row"
