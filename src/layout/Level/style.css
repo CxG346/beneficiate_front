@@ -18,7 +18,7 @@
     margin-bottom: 0;
 }
 
-.linear-gradient-level-bronze {
+.linear-gradient-level-Bronce {
     position: absolute;
     top: 0;
     left: 0;
@@ -28,7 +28,7 @@
     width: 100%;
 }
 
-.linear-gradient-level-silver {
+.linear-gradient-level-Plata {
     position: absolute;
     top: 0;
     left: 0;
@@ -38,7 +38,7 @@
     background: linear-gradient(180deg, rgba(117, 117, 117, 0.79) 0%, rgba(117, 117, 117, 0) 100%);
 }
 
-.linear-gradient-level-gold {
+.linear-gradient-level-Oro {
     position: absolute;
     top: 0;
     left: 0;
@@ -48,7 +48,7 @@
     background: linear-gradient(180deg, rgba(252, 208, 98, 0.79) 0%, rgba(252, 208, 98, 0) 100%);
 }
 
-.linear-gradient-level-diamond {
+.linear-gradient-level-Platino {
     position: absolute;
     top: 0;
     left: 0;

@@ -5,9 +5,13 @@ import GlassContainer from "../../components/GlassContainer";
 import ActionsToWin, { ActionsToWinProps } from "../../components/ActionsToWin";
 import { sendFacebookRewards, sendGoogleRewards, sendInstagramRewards, sendNewsletterRewards } from "../../services/sendService";
 import { useAlert } from "../../components/Alert/useAlert";
+import { useNavigate } from "react-router-dom";
+import { useDataContext } from "../../contexts/useModal";
 
 const EarnPoints: React.FC = () => {
   const { showAlert } = useAlert();
+  const { setData } = useDataContext();
+  const navigate = useNavigate();
   const actions: ActionsToWinProps[] = [
     {
       image: <i className="bi bi-award" style={{ fontSize: "x-large" }}></i>,
@@ -17,6 +21,7 @@ const EarnPoints: React.FC = () => {
         try {
           await sendGoogleRewards();
           showAlert("Gracias por tu calificación", "success");
+          setData();
         } catch (error) {
           handleError(error, showAlert);
         }
@@ -30,6 +35,7 @@ const EarnPoints: React.FC = () => {
         try {
           await sendInstagramRewards();
           showAlert("Gracias por seguirnos", "success");
+          setData();
         } catch (error) {
           handleError(error, showAlert);
         }
@@ -43,6 +49,7 @@ const EarnPoints: React.FC = () => {
         try {
           await sendFacebookRewards();
           showAlert("Gracias por seguirnos", "success");
+          setData();
         } catch (error) {
           handleError(error, showAlert);
         }
@@ -56,6 +63,7 @@ const EarnPoints: React.FC = () => {
         try {
           await sendNewsletterRewards();
           showAlert("Gracias por suscribirte", "success");
+          setData();
         } catch (error) {
           handleError(error, showAlert);
         }
@@ -71,7 +79,11 @@ const EarnPoints: React.FC = () => {
       showAlert('Error desconocido', 'error');
     }
   };
-  
+
+  const handleRedirect = () => {
+    navigate('/redeem-coupon');
+  };
+
   return (
     <HomeLayout>
       <GlassContainer>
@@ -109,7 +121,9 @@ const EarnPoints: React.FC = () => {
         </div>
         <i className="bi bi-chevron-right" ></i>
       </GlassContainer>
-      <GlassContainer styles={{padding: '1rem 0.5rem', marginBottom: '10rem'}}>
+      <GlassContainer 
+      onClick={handleRedirect} 
+      styles={{padding: '1rem 0.5rem', marginBottom: '10rem'}}>
         <span></span>
         <p style={{ color: "white" }}>Canjear ahora</p>
         <i className="bi bi-chevron-right" style={{ fontSize: "large" }}></i>

@@ -1,5 +1,5 @@
 import { UserLoginResponse } from "../types/api/auth";
-import { Reward } from "../types/api/rewards";
+import { Level } from "../types/api/rewards";
 import api from "./api";
 
 const data = localStorage.getItem("general_data_user");
@@ -18,7 +18,7 @@ export const getRewards = () => {
 };
 
 export const getRewardsLeves = () => {
-    return api<string, Reward[]>({
+    return api<string, Level[]>({
         method: "GET",
         url: "api/app/ecomerce-integration/levels",
     });

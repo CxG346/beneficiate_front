@@ -10,7 +10,7 @@ const NetworkList: React.FC = () => {
     >
       <div
         className="row"
-        style={{ display: "flex", justifyContent: "center" }}
+        style={{ display: "flex" }}
       >
         <div style={{ width: "80%" }}>
           <p style={{ color: "white", fontSize: "12px", textAlign: "left" }}>

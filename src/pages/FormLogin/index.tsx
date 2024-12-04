@@ -53,10 +53,12 @@ const FormLogin: React.FC = () => {
       <h2 className="title-good text-abel">¡Qué bueno tenerte de nuevo!</h2>
       <div className="form-container">
         <GeneralInput
+          type="text"
           placeholder="CI/Email"
           onChange={(e) => handleChangeInput(e, setUser)}
         />
         <GeneralInput
+          type="password"
           placeholder="Contraseña"
           onChange={(e) => handleChangeInput(e, setPassword)}
         />

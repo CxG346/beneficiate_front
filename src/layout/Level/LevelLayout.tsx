@@ -1,34 +1,43 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import PointLevel from "../../components/PointLevel";
+import { Level } from "../../types/api/rewards";
+import { getRewardsLeves } from "../../services/rewardsService";
 
 export interface LevelLayoutProps {
   children: React.ReactNode;
 }
 
 const LevelLayout: React.FC<LevelLayoutProps> = ({ children }) => {
-  const [level, setLevel] = useState<string>("silver");
+  const [level, setLevel] = useState<string>("Bronce");
+  const [levels, setLevels] = useState<Level[]>([]);
   const [xTransform, setXTransform] = useState<string>("translate(50%,0)");
 
   const handleLevel = () => {
     switch (level) {
-      case "bronze":
+      case "Bronce":
         setXTransform("translate(50%,0)");
         break;
-      case "silver":
+      case "Plata":
         setXTransform("translate(15%,0)");
         break;
-      case "gold":
+      case "Oro":
         setXTransform("translate(-15%,0)");
         break;
-      case "diamond":
+      case "Platino":
         setXTransform("translate(-50%,0)");
         break;
     }
   };
+  
 
   useEffect(() => {
-    handleLevel();
+    const fetchData = async () => {
+      const data: Level[] = await getRewardsLeves();
+      setLevels(data);
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -43,38 +52,18 @@ const LevelLayout: React.FC<LevelLayoutProps> = ({ children }) => {
           className={`level-container level-container-${level}`}
           style={{ transform: xTransform }}
         >
-          <PointLevel
-            levelName={"Bronce"}
-            minPoints={0}
-            maxPoints={300}
-            isLast={false}
-            isActive={level === "bronze"}
-            onClick={() => setLevel("bronze")}
-          />
-          <PointLevel
-            levelName={"Plata"}
-            minPoints={301}
-            maxPoints={600}
-            isLast={false}
-            isActive={level === "silver"}
-            onClick={() => setLevel("silver")}
-          />
-          <PointLevel
-            levelName={"Oro"}
-            minPoints={601}
-            maxPoints={900}
-            isLast={false}
-            isActive={level === "gold"}
-            onClick={() => setLevel("gold")}
-          />
-          <PointLevel
-            levelName={"Diamante"}
-            minPoints={900}
-            maxPoints={1200}
-            isLast={true}
-            isActive={level === "diamond"}
-            onClick={() => setLevel("diamond")}
-          />
+          {levels.map((lvl, index) => (
+            <PointLevel
+              key={index}
+              levelName={lvl.name}
+              minPoints={0}
+              maxPoints={300}
+              isLast={index === levels.length - 1}
+              isActive={level === lvl.name}
+              onClick={() => setLevel(lvl.name)}
+              pointsRange={lvl.pointsRange}
+            />
+          ))}
         </div>
         <svg
           className="wave-svg"

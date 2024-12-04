@@ -3,6 +3,8 @@ import { ConfigurationModal, GlobalLoginTokenServiceRequest, UserLoginResponse }
 import { getRewards } from '../services/rewardsService';
 import axios from 'axios';
 import { configModal } from '../services/authServices';
+import { useDispatch } from 'react-redux';
+import { setGeneralConfig } from '../slices/generalConfigSlice';
 
 export interface DataContextProps {
   token: string | null;
@@ -15,11 +17,13 @@ export interface DataContextProps {
   setDataUser: (dataUser: UserLoginResponse) => void;
   setTokenUser: (tokenUser: string) => void;
   setConfigModalData: (configModalData: ConfigurationModal) => void;
+  setData: () => void;
 }
 
 export const ModalContext = createContext<DataContextProps | undefined>(undefined);
 
 export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const dispatch = useDispatch();
   const [token, setToken] = useState<string | null>('');
   const [dataUser, setDataUser] = useState<UserLoginResponse>({} as UserLoginResponse);
   const [points, setPoints] = useState<number>(0);
@@ -77,6 +81,7 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const setConfigModalFunc = async () => {
     const response = await configModal();
     setConfigModalData(response);
+    dispatch(setGeneralConfig(response));
   }
 
   const setData = async () => {
@@ -86,7 +91,7 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   return (
     <ModalContext.Provider value={{ 
       token, points, dataUser, tokenUser, configModalData,
-      setToken, setPoints, setDataUser, setTokenUser, setConfigModalData
+      setToken, setPoints, setDataUser, setTokenUser, setConfigModalData, setData
       }}>
       {children}
     </ModalContext.Provider>

@@ -19,13 +19,14 @@ const CodeValidation: React.FC = () => {
         }}
       >
         <h1
+          className="text-abel"
           style={{
             color: `${secondaryColor}`,
             fontWeight: "normal",
-            fontSize: "2rem",
+            fontSize: "35px",
             textAlign: "center",
             margin: "0",
-            padding: "0 15%",
+            padding: "0px 1rem 1rem",
           }}
         >
           Ingresa el código de verificación
@@ -33,8 +34,7 @@ const CodeValidation: React.FC = () => {
         <p
           style={{
             textAlign: "center",
-            marginTop: "1rem",
-            padding: "1rem 15%",
+            padding: "0px 5% 1rem",
           }}
         >
           Introduzca el código que te hemos enviado a su correo electrónico
@@ -44,7 +44,7 @@ const CodeValidation: React.FC = () => {
           style={{
             display: "flex",
             gap: "13px",
-            width: "85%",
+            width: "90%",
             marginBottom: "2rem",
           }}
         >
@@ -53,7 +53,7 @@ const CodeValidation: React.FC = () => {
             style={{
               color: `${secondaryColor}`,
               background: "transparent",
-              border: `1px solid ${secondaryColor}`,
+              // border: `1px solid ${secondaryColor}`,
             }}
             type="text"
           />
@@ -62,7 +62,7 @@ const CodeValidation: React.FC = () => {
             style={{
               color: `${secondaryColor}`,
               background: "transparent",
-              border: `1px solid ${secondaryColor}`,
+              // border: `1px solid ${secondaryColor}`,
             }}
             type="text"
           />
@@ -71,7 +71,7 @@ const CodeValidation: React.FC = () => {
             style={{
               color: `${secondaryColor}`,
               background: "transparent",
-              border: `1px solid ${secondaryColor}`,
+              // border: `1px solid ${secondaryColor}`,
             }}
             type="text"
           />
@@ -80,16 +80,16 @@ const CodeValidation: React.FC = () => {
             style={{
               color: `${secondaryColor}`,
               background: "transparent",
-              border: `1px solid ${secondaryColor}`,
+              // border: `1px solid ${secondaryColor}`,
             }}
             type="text"
           />
         </div>
-        <button className="create-button">Crear cuenta</button>
-        <a href="" style={{ color: "#2E3192", marginTop: "0" }}>
+        <button className="create-button">Comprobar</button>
+        <a href="" style={{ color: "#2E3192", marginTop: "0", fontSize: '14px' }}>
           Reenviar código
         </a>
-        <p style={{ color: `${primaryColor}`, padding: "1rem" }}>
+        <p style={{ color: `${primaryColor}`, padding: "0.6rem 0 0" }}>
           By Benefíciate
         </p>
       </div>

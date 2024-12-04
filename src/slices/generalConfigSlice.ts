@@ -1,12 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { GeneralConfigState } from "../types/generalConfig";
+import { IGeneralConfigState } from "../types/generalConfig";
 
-const initialState: GeneralConfigState = {
-  primaryColor: "rgba(110, 78, 255, 1)",
-  primaryColor70: "rgba(110, 78, 255, 0.7)",
-  secondaryColor: "rgba(46, 49, 146, 1)",
-  secondaryColor70: "rgba(46, 49, 146, 0.7)",
+const initialState: IGeneralConfigState = {
+  imagenLogo: "",
+  primaryColor: "",
+  primaryColor70: "",
+  secondaryColor: "",
+  secondaryColor70: "",
+  tertiaryColor: "",
+  title: "",
+  frequentQuestions: null,
+  questionsAboutMe: null,
+  bottonText: "",
+  colorButton: "",
+  imagenBanner: "",
 };
+
 
 const generalConfigSlice = createSlice({
   name: "generalConfig",
@@ -26,6 +35,33 @@ const generalConfigSlice = createSlice({
     setSecondaryColor70: (state, action) => {
       state.secondaryColor70 = action.payload;
     },
+    setGeneralConfig: (state, action) => {
+      const {
+        imagenLogo,
+        primaryColor,
+        secondaryColor,
+        tertiaryColor,
+        title,
+        frequentQuestions,
+        questionsAboutMe,
+        bottonText,
+        colorButton,
+        imagenBanner,
+      } = action.payload;
+
+      state.imagenLogo = imagenLogo;
+      state.primaryColor = primaryColor;
+      state.primaryColor70 = primaryColor.replace("1)", "0.7)");
+      state.secondaryColor = secondaryColor;
+      state.secondaryColor70 = secondaryColor.replace("1)", "0.7)");
+      state.tertiaryColor = tertiaryColor;
+      state.title = title;
+      state.frequentQuestions = frequentQuestions;
+      state.questionsAboutMe = questionsAboutMe;
+      state.bottonText = bottonText;
+      state.colorButton = colorButton;
+      state.imagenBanner = imagenBanner;
+    },
   },
 });
 
@@ -34,6 +70,7 @@ export const {
   setPrimaryColor70,
   setSecondaryColor,
   setSecondaryColor70,
+  setGeneralConfig,
 } = generalConfigSlice.actions;
 
 export default generalConfigSlice.reducer;
