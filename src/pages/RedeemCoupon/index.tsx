@@ -4,14 +4,21 @@ import GlassContainer from "../../components/GlassContainer";
 import "./style.css";
 import { useSelector } from "react-redux";
 import { AppState } from "../../store/store";
+import { useNavigate } from "react-router-dom";
 
 const RedeemCoupon: React.FC = () => {
+  const navigate = useNavigate();
+
   const [valueInputNumber, setValueInputNumber] = useState<number>(0);
   const [points, setPoints] = useState<number>(150);
 
   const { secondaryColor } = useSelector(
     (state: AppState) => state.generalConfig
   );
+
+  const handleFaqs = () => { 
+    navigate('/faqs');
+  };
 
   const handleInputNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -73,7 +80,7 @@ const RedeemCoupon: React.FC = () => {
         </div>
       </GlassContainer>
       <div style={{ display: "flex", width: "80%", gap: ".5rem" }}>
-        <div className="col-md-6" style={{ width: "100%" }}>
+        <div className="col-md-6" style={{ width: "100%" }} onClick={handleFaqs}>
           <GlassContainer styles={{ width: "100%", padding: "0.5rem 0" }}>
             <p
               style={{
@@ -89,7 +96,7 @@ const RedeemCoupon: React.FC = () => {
             </p>
           </GlassContainer>
         </div>
-        <div className="col-md-6" style={{ width: "100%" }}>
+        <div className="col-md-6" style={{ width: "100%" }} onClick={handleFaqs}>
           <GlassContainer styles={{ width: "100%", padding: "0.5rem 0" }}>
             <p
               style={{

@@ -8,6 +8,7 @@ import router from "./routes";
 import { useEffect, useState } from "react";
 import { GlobalLoginTokenServiceRequest } from "./types/api/auth";
 import axios from "axios";
+import { ModalProvider } from "./contexts/ModalContext";
 
 function App() {
   const [showModal, setShowModal] = useState<boolean>(true);
@@ -44,17 +45,19 @@ function App() {
 
   return (
     <>
-      <div className="position-button-plugin">
-        <span style={{ display: showModal ? "block" : "none" }}>
-          <Modal>
-            <RouterProvider router={router} />
-          </Modal>
-        </span>
-        <div className="button-notification">
-          <Notifies />
-          <FloatButton onClick={handleShowModal} />
+      <ModalProvider>
+        <div className="position-button-plugin">
+          <span style={{ display: showModal ? "block" : "none" }}>
+            <Modal>
+              <RouterProvider router={router} />
+            </Modal>
+          </span>
+          <div className="button-notification">
+            <Notifies />
+            <FloatButton onClick={handleShowModal} />
+          </div>
         </div>
-      </div>
+      </ModalProvider>
     </>
   );
 }

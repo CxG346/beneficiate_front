@@ -5,17 +5,20 @@ export interface ActionsToWinProps {
   image: React.ReactNode;
   points: number;
   action: string;
+  onClick: () => void;
 }
 
 const ActionsToWin: React.FC<ActionsToWinProps> = ({
   image,
   points,
   action,
+  onClick
 }) => {
   return (
     <div
       className="container-win"
-      style={{ display: "flex", alignItems: "center", padding: "0.5rem 0" }}
+      style={{ display: "flex", alignItems: "center" }}
+      onClick={() => onClick && onClick()}
     >
       {image}
       <div

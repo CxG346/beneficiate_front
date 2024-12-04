@@ -3,33 +3,75 @@ import HomeLayout from "../../layout/Home/HomeLayout";
 import "./style.css";
 import GlassContainer from "../../components/GlassContainer";
 import ActionsToWin, { ActionsToWinProps } from "../../components/ActionsToWin";
+import { sendFacebookRewards, sendGoogleRewards, sendInstagramRewards, sendNewsletterRewards } from "../../services/sendService";
+import { useAlert } from "../../components/Alert/useAlert";
 
 const EarnPoints: React.FC = () => {
+  const { showAlert } = useAlert();
   const actions: ActionsToWinProps[] = [
     {
-      image: <i className="bi bi-award" style={{ fontSize: "xx-large" }}></i>,
+      image: <i className="bi bi-award" style={{ fontSize: "x-large" }}></i>,
       points: 150,
       action: "Déjanos 5 estrellas en Google",
+      onClick: async () => {
+        try {
+          await sendGoogleRewards();
+          showAlert("Gracias por tu calificación", "success");
+        } catch (error) {
+          handleError(error, showAlert);
+        }
+      },
     },
     {
-      image: (
-        <i className="bi bi-instagram" style={{ fontSize: "xx-large" }}></i>
-      ),
+      image: <i className="bi bi-instagram" style={{ fontSize: "x-large" }}></i>,
       points: 75,
       action: "Seguir en Instagram",
+      onClick: async () => {
+        try {
+          await sendInstagramRewards();
+          showAlert("Gracias por seguirnos", "success");
+        } catch (error) {
+          handleError(error, showAlert);
+        }
+      },
     },
     {
-      image: <i className="bi bi-facebook"></i>,
+      image: <i className="bi bi-facebook" style={{ fontSize: "x-large" }}></i>,
       points: 75,
       action: "Seguir en Facebook",
+      onClick: async () => {
+        try {
+          await sendFacebookRewards();
+          showAlert("Gracias por seguirnos", "success");
+        } catch (error) {
+          handleError(error, showAlert);
+        }
+      },
     },
     {
-      image: <i className="bi bi-newspaper"></i>,
+      image: <i className="bi bi-newspaper" style={{ fontSize: "x-large" }}></i>,
       points: 75,
       action: "Suscribirse al Newsletter",
+      onClick: async () => {
+        try {
+          await sendNewsletterRewards();
+          showAlert("Gracias por suscribirte", "success");
+        } catch (error) {
+          handleError(error, showAlert);
+        }
+      },
     },
   ];
 
+  const handleError = (error: unknown, showAlert: (message: string, type: "success" | "error" | "warning") => void) => {
+    if (error instanceof Error && typeof error === 'object' && error.message) {
+      const responseError = error as unknown as { response: { data: { error: { message: string } } } };
+      showAlert(responseError.response.data.error.message, 'error');
+    } else {
+      showAlert('Error desconocido', 'error');
+    }
+  };
+  
   return (
     <HomeLayout>
       <GlassContainer>
@@ -61,12 +103,13 @@ const EarnPoints: React.FC = () => {
               image={element.image}
               points={element.points}
               action={element.action}
+              onClick={element.onClick}
             />
           ))}
         </div>
-        <i className="bi bi-chevron-right"></i>
+        <i className="bi bi-chevron-right" ></i>
       </GlassContainer>
-      <GlassContainer styles={{padding: '1rem 0.5rem'}}>
+      <GlassContainer styles={{padding: '1rem 0.5rem', marginBottom: '10rem'}}>
         <span></span>
         <p style={{ color: "white" }}>Canjear ahora</p>
         <i className="bi bi-chevron-right" style={{ fontSize: "large" }}></i>

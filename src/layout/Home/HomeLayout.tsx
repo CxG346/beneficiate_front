@@ -4,16 +4,11 @@ import "./style.css";
 import avatarBronze from "../../assets/avatar_bronze.png";
 import bronzeMedal from "../../assets/bronze_medal.png";
 import { HomeLayoutProps } from "../../types/homeLayout";
-import { UserLoginResponse } from "../../types/api/auth";
+import { useDataContext } from "../../contexts/useModal";
 
 const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
 
-  const data = localStorage.getItem("general_data_user");
-  let dataUser: UserLoginResponse = {} as UserLoginResponse;
-
-  if (data && data !== "undefined") {
-    dataUser = JSON.parse(data);
-  }
+  const { dataUser } = useDataContext();
 
   return (
     <>
@@ -34,7 +29,7 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
                 </p>
               </div>
             </div>
-            <div className="points-container" style={{ cursor: "pointer" }}>
+            <div className="points-container" style={{ cursor: "pointer", backdropFilter: 'blur(3px)' }}>
               <img src={bronzeMedal} alt="" />
               <div className="col col-points">
                 <p style={{ color: "white", fontSize: "10px", margin: "0" }}>
@@ -54,7 +49,7 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
               </div>
               <div className="container-level">
                 <p style={{ color: "white", fontSize: "12px", margin: "0" }}>
-                  (Nivel 1 .Plata)
+                  (Nivel 1 .{dataUser.level})
                 </p>
               </div>
               <span>

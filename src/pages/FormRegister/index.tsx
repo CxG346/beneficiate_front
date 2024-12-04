@@ -55,7 +55,6 @@ const FormRegister: React.FC = () => {
           navigate(PATH.LOGIN);
         }, 1000);
       } catch (error) {
-        
         if (error instanceof Error  && typeof error === 'object'  && error.message) {
           const responseError = error as unknown as { response: { data: { error: { message: string } } } };
           showAlert(responseError.response.data.error.message, 'error');

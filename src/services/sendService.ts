@@ -29,28 +29,28 @@ export const sendRequestRewardQuestions = (data: Question[]) => {
 export const sendInstagramRewards = () => {
     return api<Question[], Question[]>({
         method: "POST",
-        url: "api/app/ecomerce-integration/send-instagram-rewards",
+        url: `api/app/ecomerce-integration/send-instagram-rewards?token=${dataUser.token}`,
     });
 };
 
 export const sendFacebookRewards = () => {
     return api<Question[], Question[]>({
         method: "POST",
-        url: "api/app/ecomerce-integration/send-facebook-rewards",
+        url: `api/app/ecomerce-integration/send-facebook-rewards?token=${dataUser.token}`,
     });
 };
 
 export const sendGoogleRewards = () => {
     return api<Question[], Question[]>({
         method: "POST",
-        url: "api/app/ecomerce-integration/send-google-rewards",
+        url: `api/app/ecomerce-integration/send-google-rewards?token=${dataUser.token}`,
     });
 };  
 
 export const sendNewsletterRewards = () => {
     return api<Question[], Question[]>({
         method: "POST",
-        url: "api/app/ecomerce-integration/send-newsletter-rewards",
+        url: `api/app/ecomerce-integration/send-newsletter-rewards?token=${dataUser.token}`,
     });
 };
 

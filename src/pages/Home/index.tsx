@@ -1,11 +1,23 @@
 import React from "react";
 import HomeLayout from "../../layout/Home/HomeLayout";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleFaqs = () => { 
+    navigate('/faqs');
+  };
+
+  const handleEarnPoints = () => {
+    navigate('/redeem-coupon');
+  };
+
   return (
     <HomeLayout>
       <div
+        onClick={handleEarnPoints}
         className="col-md-12 redeem-now-container general-container-glass"
         style={{ cursor: "pointer" }}
       >
@@ -15,12 +27,14 @@ const Home: React.FC = () => {
       </div>
       <div className="questions-row">
         <div
+          onClick={handleFaqs}
           className="col-md-5 general-container-glass questions-container"
           style={{ cursor: "pointer" }}
         >
           Cómo sumar puntos
         </div>
         <div
+          onClick={handleFaqs}
           className="col-md-5 general-container-glass questions-container"
           style={{ cursor: "pointer" }}
         >

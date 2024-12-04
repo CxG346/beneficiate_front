@@ -1,6 +1,5 @@
 .general-container-glass {
-    position: relative;
-    background-color: rgb(110, 78, 255, .85);
+    background-color: #6E4EFFB2;
     border-radius: 6px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-size: 12px;

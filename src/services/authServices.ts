@@ -1,4 +1,5 @@
 import {
+  ConfigurationModal,
   UserLoginResponse,
   UserLoginServiceRequest,
   UserRegister,
@@ -20,4 +21,12 @@ export const register = (data: UserRegister) => {
     data,
   });
 }
+
+export const configModal = (data: { ci: string }) => {
+  return api<{ ci: string }, ConfigurationModal>({
+    method: "POST",
+    url: "api/app/ecomerce-integration/configuration-modal",
+    data,
+  });
+};
 

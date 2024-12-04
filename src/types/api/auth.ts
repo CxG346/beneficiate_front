@@ -46,3 +46,16 @@ export interface UserRegister {
   password:       string;
   emailMarketing: boolean;
 }
+
+export interface ConfigurationModal {
+  imagenLogo:        string;
+  primaryColor:      string;
+  secondaryColor:    string;
+  tertiaryColor:     string;
+  title:             string;
+  frequentQuestions: null;
+  questionsAboutMe:  null;
+  bottonText:        string;
+  colorButton:       string;
+  imagenBanner:      string;
+}
