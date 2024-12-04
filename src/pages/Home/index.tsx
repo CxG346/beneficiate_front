@@ -1,11 +1,23 @@
 import React from "react";
 import HomeLayout from "../../layout/Home/HomeLayout";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleFaqs = () => { 
+    navigate('/faqs');
+  };
+
+  const handleEarnPoints = () => {
+    navigate('/redeem-coupon');
+  };
+
   return (
     <HomeLayout>
       <div
+        onClick={handleEarnPoints}
         className="col-md-12 redeem-now-container general-container-glass"
         style={{ cursor: "pointer" }}
       >
@@ -15,12 +27,14 @@ const Home: React.FC = () => {
       </div>
       <div className="questions-row">
         <div
+          onClick={handleFaqs}
           className="col-md-5 general-container-glass questions-container"
           style={{ cursor: "pointer" }}
         >
           Cómo sumar puntos
         </div>
         <div
+          onClick={handleFaqs}
           className="col-md-5 general-container-glass questions-container"
           style={{ cursor: "pointer" }}
         >
@@ -29,7 +43,7 @@ const Home: React.FC = () => {
       </div>
       <div
         className="general-container-glass"
-        style={{ width: "80%", margin: "1rem 0" }}
+        style={{ width: "90%", margin: "1rem 0" }}
       >
         <div
           className="row"
@@ -41,7 +55,7 @@ const Home: React.FC = () => {
           }}
         >
           <div className="col header-earn-points" style={{ marginTop: "1rem" }}>
-            <p style={{ margin: "0", fontSize: "13px" }}>
+            <p className="text-abel" style={{ margin: "0", fontSize: "13px", lineHeight: 1 }}>
               Genera ingresos invitando a tus amigos
             </p>
             <p style={{ margin: "0", fontSize: "10px" }}>
@@ -50,12 +64,13 @@ const Home: React.FC = () => {
           </div>
           <i className="bi bi-chevron-right"></i>
         </div>
-        <div className="row">
+        <div>
           <p
             style={{
               color: "white",
-              fontSize: "14px",
-              padding: "0.25rem 0.5rem 2rem 0.5rem",
+              fontSize: "12px",
+              textAlign: "start",
+              margin: ".25rem 0.7rem 3rem ",
             }}
           >
             Por cada compra de tus referidos generas x Puntos que equivalen a X
@@ -63,11 +78,8 @@ const Home: React.FC = () => {
           </p>
         </div>
         <div
-          className="row"
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            padding: "0 10px"
           }}
         >
           <div className="input-code">
@@ -81,8 +93,8 @@ const Home: React.FC = () => {
           className="row"
           style={{ display: "flex", justifyContent: "center" }}
         >
-          <div style={{ width: "80%" }}>
-            <p style={{ color: "white", fontSize: "12px", textAlign: "left" }}>
+          <div style={{ width: "100%" }}>
+            <p style={{ color: "white", fontSize: "12px", textAlign: "left", padding: '0 0 0 6px' }}>
               Reenviarme el codigo a:
             </p>
           </div>
@@ -104,7 +116,7 @@ const Home: React.FC = () => {
             }}
           >
             <i className="bi bi-whatsapp" style={{ fontSize: "x-large" }}></i>
-            <p style={{ color: "white" }}>whatsapp</p>
+            <p style={{ color: "white" }}>Whatsapp</p>
           </div>
           <div
             style={{

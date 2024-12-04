@@ -16,7 +16,7 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;  
 }
 
 a {
@@ -72,4 +72,28 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* add style placeholder inputs */
+input::placeholder {
+  color: #6E4EFF ;
+}
+
+textarea::placeholder {
+  color: #6E4EFF;
+}
+
+.form-container{
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-flow: column !important;
+  /* flex-direction: column; */
+  padding: 10px 20px !important;
+  width: auto !important;
+  position: relative !important;
+}
+
+.text-abel{
+  font-family: 'Abel', sans-serif;
 }

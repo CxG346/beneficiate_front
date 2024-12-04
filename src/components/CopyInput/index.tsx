@@ -11,7 +11,7 @@ const CopyInput: React.FC = () => {
         alignItems: "center",
       }}
     >
-      <div className="input-code">
+      <div className="input-code" style={{ width: '95%'}}>
         <input type="text" />
         <button>
           <i className="bi bi-copy" style={{ fontSize: "large" }}></i>

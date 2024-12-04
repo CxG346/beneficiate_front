@@ -4,14 +4,22 @@ import GlassContainer from "../../components/GlassContainer";
 import "./style.css";
 import { useSelector } from "react-redux";
 import { AppState } from "../../store/store";
+import { useNavigate } from "react-router-dom";
+import { useDataContext } from "../../contexts/useModal";
 
 const RedeemCoupon: React.FC = () => {
+  const navigate = useNavigate();
+  const { configModalData } = useDataContext();
   const [valueInputNumber, setValueInputNumber] = useState<number>(0);
   const [points, setPoints] = useState<number>(150);
 
   const { secondaryColor } = useSelector(
     (state: AppState) => state.generalConfig
   );
+
+  const handleFaqs = () => { 
+    navigate('/faqs');
+  };
 
   const handleInputNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -39,13 +47,13 @@ const RedeemCoupon: React.FC = () => {
     <HomeLayout>
       <GlassContainer>
         <div className="col" style={{ padding: "1rem 20%" }}>
-          <p style={{ color: "white", fontSize: "14px" }}>
+          <p className="text-abel" style={{ color: "white", fontSize: "14px" }}>
             Introduzca la cantidad de puntos que desea canjear
           </p>
           <input
             type="text"
-            className="input-number"
-            style={{ padding: "2rem 0" }}
+            className="input-number text-abel"
+            style={{ padding: "1rem 0", fontSize: "70px", textAlign: "center" }}
             value={valueInputNumber}
             onChange={handleInputNumber}
           />
@@ -72,8 +80,8 @@ const RedeemCoupon: React.FC = () => {
           </button>
         </div>
       </GlassContainer>
-      <div style={{ display: "flex", width: "80%", gap: ".5rem" }}>
-        <div className="col-md-6" style={{ width: "100%" }}>
+      <div style={{ display: "flex", width: "90%", gap: "1.5rem" }}>
+        <div className="col-md-6" style={{ width: "100%" }} onClick={handleFaqs}>
           <GlassContainer styles={{ width: "100%", padding: "0.5rem 0" }}>
             <p
               style={{
@@ -89,7 +97,7 @@ const RedeemCoupon: React.FC = () => {
             </p>
           </GlassContainer>
         </div>
-        <div className="col-md-6" style={{ width: "100%" }}>
+        <div className="col-md-6" style={{ width: "100%" }} onClick={handleFaqs}>
           <GlassContainer styles={{ width: "100%", padding: "0.5rem 0" }}>
             <p
               style={{
@@ -105,6 +113,12 @@ const RedeemCoupon: React.FC = () => {
             </p>
           </GlassContainer>
         </div>
+      </div>
+      <div style={{ padding: '80px 15px 40px'}}>
+        <img src={
+          configModalData.imagenBanner
+        } alt="banner" style={{ width: '100%'}}
+         />
       </div>
     </HomeLayout>
   );

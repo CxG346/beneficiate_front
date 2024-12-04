@@ -1,8 +1,8 @@
-h2 {
+.title-join {
     color: #2E3192;
     font-weight: 400;
     text-align: center;
-    margin: 2rem 0 0 0;
+    margin: 40px 0 0;
 }
 
 p {
@@ -15,9 +15,9 @@ p {
 
 .form-container {
     position: absolute;
-    height: 75%;
+    height: auto;
     width: 100%;
-    overflow: scroll;
+    overflow: hidden;
     display: flex;
     align-items: center;
     flex-direction: column;

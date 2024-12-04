@@ -39,11 +39,13 @@ const Level: React.FC = () => {
               <div
                 className=""
                 style={{
+                  padding: "0 8px",
                   display: "flex",
                   flexDirection: "column",
                 }}
               >
                 <p
+                  className="text-abel"
                   style={{
                     color: "white",
                     margin: "0",
@@ -69,9 +71,10 @@ const Level: React.FC = () => {
             <p
               style={{
                 color: "white",
-                fontSize: "14px",
+                fontSize: "12px",
                 textAlign: "left",
-                padding: "2rem 0",
+                padding: "0.5rem 0 2rem",
+                lineHeight: "1",
               }}
             >
               Dale a tus amigos 100 puntos y reclama los tuyos cuando hagan una

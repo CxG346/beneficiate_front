@@ -1,10 +1,17 @@
 import React from "react";
 import GlassContainer from "../GlassContainer";
+import { useNavigate } from "react-router-dom";
 
 const DoubleGlass: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleFaqs = () => {
+    navigate("/faqs");
+  };
+
   return (
-    <div style={{ display: "flex", width: "80%", gap: ".5rem" }}>
-      <div className="col-md-6" style={{ width: "100%" }}>
+    <div style={{ display: "flex", width: "89%", gap: "1.5rem" }}>
+      <div className="col-md-6" style={{ width: "100%" }} onClick={handleFaqs}>
         <GlassContainer styles={{ width: "100%", padding: "0.5rem 0" }}>
           <p
             style={{
@@ -20,7 +27,7 @@ const DoubleGlass: React.FC = () => {
           </p>
         </GlassContainer>
       </div>
-      <div className="col-md-6" style={{ width: "100%" }}>
+      <div className="col-md-6" style={{ width: "100%" }} onClick={handleFaqs}>
         <GlassContainer styles={{ width: "100%", padding: "0.5rem 0" }}>
           <p
             style={{

@@ -3,19 +3,19 @@ import "./style.css";
 
 export interface PointLevelProps {
   levelName: string;
-  minPoints: number;
-  maxPoints: number;
+  minPoints?: number;
+  maxPoints?: number;
   isLast: boolean;
   isActive: boolean;
   onClick?: () => void;
+  pointsRange: string;
 }
 
 const PointLevel: React.FC<PointLevelProps> = ({
   levelName,
-  minPoints,
-  maxPoints,
   isLast,
   isActive,
+  pointsRange,
   onClick,
 }) => {
   return (
@@ -34,7 +34,8 @@ const PointLevel: React.FC<PointLevelProps> = ({
       </div>
       <div className="points-level-container" style={{width: '89px'}}>
         <p>
-          de {minPoints} <br /> a {maxPoints} puntos
+          {pointsRange}
+          {/* de {minPoints} <br /> a {maxPoints} puntos */}
         </p>
       </div>
     </div>
