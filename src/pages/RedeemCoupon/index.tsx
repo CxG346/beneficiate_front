@@ -9,9 +9,9 @@ import { useDataContext } from "../../contexts/useModal";
 
 const RedeemCoupon: React.FC = () => {
   const navigate = useNavigate();
-  const { configModalData } = useDataContext();
+  const { configModalData, dataUser } = useDataContext();
   const [valueInputNumber, setValueInputNumber] = useState<number>(0);
-  const [points, setPoints] = useState<number>(150);
+  const [points, setPoints] = useState<number>(dataUser.amountOfPoints || 0);
 
   const { secondaryColor } = useSelector(
     (state: AppState) => state.generalConfig
@@ -40,8 +40,8 @@ const RedeemCoupon: React.FC = () => {
   };
 
   useEffect(() => {
-    setPoints(150);
-  }, []);
+    setPoints(dataUser.amountOfPoints);
+  }, [dataUser]);
 
   return (
     <HomeLayout>

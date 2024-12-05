@@ -11,10 +11,12 @@ import { login } from "../../services/authServices";
 import { PATH } from "../../routes/paths";
 import { useNavigate } from "react-router-dom";
 import { useAlert } from "../../components/Alert/useAlert";
+import { useDataContext } from "../../contexts/useModal";
 
 const FormLogin: React.FC = () => {
   const navigate = useNavigate();
   const { showAlert } = useAlert();
+  const { setTokenUser } = useDataContext();
   const { secondaryColor } = useSelector((state: AppState) => state.generalConfig);
 
   const [user, setUser] = useState<string>("");
@@ -38,7 +40,9 @@ const FormLogin: React.FC = () => {
     try {
       const resp: UserLoginResponse = await login(body);
       showAlert("Los datos son correctos", "success");
-      localStorage.setItem("general_data_user", JSON.stringify(resp));
+      const token = JSON.stringify(resp)
+      localStorage.setItem("general_data_user", token);
+      setTokenUser(token);
       setTimeout(() => {
         navigate(PATH.HOME);  
       }, 1000);
