@@ -10,7 +10,7 @@ import { ModalProvider } from "./contexts/ModalContext";
 
 function App() {
   const [showModal, setShowModal] = useState<boolean>(true);
-
+  
   const handleShowModal = () => {
     setShowModal(!showModal);
   };

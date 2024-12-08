@@ -5,9 +5,10 @@ import avatarBronze from "../../assets/avatar_bronze.png";
 import bronzeMedal from "../../assets/bronze_medal.png";
 import { HomeLayoutProps } from "../../types/homeLayout";
 import { useDataContext } from "../../contexts/useModal";
+import { useNavigate } from "react-router-dom";
 
 const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
-
+  const navigate = useNavigate();
   const { dataUser } = useDataContext();
 
   return (
@@ -30,7 +31,7 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
               </div>
             </div>
             <div className="points-container" style={{ cursor: "pointer", backdropFilter: 'blur(3px)' }}>
-              <div style={{ display: 'flex', gap: '1rem'}}>
+              <div style={{ display: 'flex', gap: '1rem'}} onClick={() => navigate('/levels')}>
                 <img src={bronzeMedal} alt="" style={{margin: '9px 0 0 8px', width: '59px'}} />
                 <div className="col col-points">
                   <p style={{ color: "white", fontSize: "12px", margin: "0" }}>
@@ -55,7 +56,7 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
                   (Nivel 1 .{dataUser.level})
                 </p>
               </div>
-              <span>
+              <span onClick={() => navigate('/levels')}>
                 <i className="bi bi-chevron-right"></i>
               </span>
             </div>

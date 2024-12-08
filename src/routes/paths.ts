@@ -13,4 +13,5 @@ export const PATH = {
     SUCCESS_REDEEM: '/success-redeem',
     CODE_VALIDATION: '/code-validation',
     LEVELS: '/levels',
+    PROTECTED_ROUTE: '/protected-route',
 }

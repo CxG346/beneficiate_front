@@ -7,6 +7,7 @@ import { PATH } from "../../routes/paths";
 import { UserRegister } from "../../types/api/auth";
 import { register } from "../../services/authServices";
 import { useAlert } from "../../components/Alert/useAlert";
+import Header from "../../components/Header";
 
 const FormRegister: React.FC = () => {
   const navigate = useNavigate();
@@ -68,6 +69,9 @@ const FormRegister: React.FC = () => {
   };
 
   return (
+    
+    <>
+    <Header isDark/>
     <div className="general-container">
       <h2 className="title-join">
         Unite ahora a <strong>Quiero +</strong>
@@ -92,6 +96,7 @@ const FormRegister: React.FC = () => {
       </div>
       <a className="footer-copy" onClick={() => navigate(PATH.FORM_LOGIN)}>¿Ya tienes cuenta? <strong>Iniciar sesión</strong> </a>
     </div>
+    </>
   );
 };
 
