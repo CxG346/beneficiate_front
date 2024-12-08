@@ -43,6 +43,7 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   
   useEffect(() => {
     if (tokenUser && tokenUser !== 'undefined') {
+      console.log("tokenUser", tokenUser)
       setData();
     }
   }, [tokenUser]);
@@ -85,7 +86,8 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   }
 
   const setData = async () => {
-    setDataUser(await getRewards());
+    const token = JSON.parse(tokenUser || '{}') as UserLoginResponse;
+    setDataUser(await getRewards(token.token));
   } 
 
   return (

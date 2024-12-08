@@ -41,8 +41,10 @@ const FormLogin: React.FC = () => {
       const resp: UserLoginResponse = await login(body);
       showAlert("Los datos son correctos", "success");
       const token = JSON.stringify(resp)
+      
       localStorage.setItem("general_data_user", token);
       setTokenUser(token);
+      
       setTimeout(() => {
         navigate(PATH.HOME);  
       }, 1000);
